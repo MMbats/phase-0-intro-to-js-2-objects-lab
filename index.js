@@ -51,5 +51,51 @@ let employee = {
   }
   
   // Example usage of destructivelyDeleteFromEmployeeByKey
-  consol
-  
+  // Initialize the employee object
+// Initialize the employee object
+const Employee = {
+  name: "John Doe",
+  streetAddress: "123 Main St"
+};
+
+// Function to update employee without mutation
+function UpdateEmployeeWithKeyAndValue(employee, key, value) {
+  return {
+      ...employee,
+      [key]: value
+  };
+}
+
+// Function to update employee destructively
+function destructivelyUpdateEmployeeWithKeyAndValue(employee, key, value) {
+  employee[key] = value;
+  return employee;
+}
+
+// Function to delete from employee without mutation
+function deleteFromEmployeeByKey(employee, key) {
+  const newEmployee = { ...employee };
+  delete newEmployee[key];
+  return newEmployee;
+}
+
+// Function to delete from employee destructively
+function destructivelyDeleteFromEmployeeByKey(employee, key) {
+  delete employee[key];
+  return employee;
+}
+
+// Example usage of the functions
+console.log("Original employee:", employee);
+
+const updatedEmployee = updateEmployeeWithKeyAndValue(employee, "name", "Jane Doe");
+console.log("Update without mutation:", updatedEmployee);
+
+destructivelyUpdateEmployeeWithKeyAndValue(employee, "streetAddress", "456 Elm St");
+console.log("Destructive update:", employee);
+
+const employeeAfterDeletion = deleteFromEmployeeByKey(employee, "name");
+console.log("Delete without mutation:", employeeAfterDeletion);
+
+destructivelyDeleteFromEmployeeByKey(employee, "streetAddress");
+console.log("Destructive delete:", employee);
